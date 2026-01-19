@@ -115,10 +115,6 @@ DevNotes/
   <img src="screenshots/tags.png" width="300" />
 </p>
 
-<p align="center">
-  <img src="screenshots/pinned-notes.png" width="300" />
-</p>
-
 ---
 ## 👤 Author
 
