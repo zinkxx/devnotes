@@ -100,28 +100,26 @@ DevNotes/
 ---
 ## 📸 Screenshots
 
-### 📝 Notes Overview
-![Notes List](screenshots/notes-list.png)
+<p align="center">
+  <img src="screenshots/notes-list.png" width="300" />
+  <img src="screenshots/reminders.png" width="300" />
+</p>
 
-### ⏰ Reminders
-![Reminders](screenshots/reminders.png)
+<p align="center">
+  <img src="screenshots/edit-note.png" width="300" />
+  <img src="screenshots/settings.png" width="300" />
+</p>
 
-### 🔍 Edit Note
-![Edit Note](screenshots/edit-note.png)
+<p align="center">
+  <img src="screenshots/add-note.png" width="300" />
+  <img src="screenshots/tags.png" width="300" />
+</p>
 
-### ⚙️ Settings
-![Settings](screenshots/settings.png)
+<p align="center">
+  <img src="screenshots/pinned-notes.png" width="300" />
+</p>
 
-### ✍️ Add New Note
-![Add Note](screenshots/add-note.png)
-
-### 🏷️ Tags
-![Tags](screenshots/tags.png)
-
-### 📌 Pinned Notes
-![Pinned Notes](screenshots/pinned-notes.png)
-
---
+---
 ## 👤 Author
 
 **Zinkx (Said Kaya)**  
