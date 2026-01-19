@@ -98,7 +98,30 @@ DevNotes/
 - [ ] Widget support
 
 ---
+## 📸 Screenshots
 
+### 📝 Notes Overview
+![Notes List](screenshots/notes-list.png)
+
+### ⏰ Reminders
+![Reminders](screenshots/reminders.png)
+
+### 🔍 Edit Note
+![Edit Note](screenshots/edit-note.png)
+
+### ⚙️ Settings
+![Settings](screenshots/settings.png)
+
+### ✍️ Add New Note
+![Add Note](screenshots/add-note.png)
+
+### 🏷️ Tags
+![Tags](screenshots/tags.png)
+
+### 📌 Pinned Notes
+![Pinned Notes](screenshots/pinned-notes.png)
+
+--
 ## 👤 Author
 
 **Zinkx (Said Kaya)**  
