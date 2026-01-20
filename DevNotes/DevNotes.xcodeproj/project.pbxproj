@@ -32,11 +32,15 @@
 		586260CA2F1D1A7D001F6B2B /* TagManagerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586260C92F1D1A7D001F6B2B /* TagManagerView.swift */; };
 		586260CC2F1D1A8B001F6B2B /* AddTagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586260CB2F1D1A8A001F6B2B /* AddTagView.swift */; };
 		586260CE2F1D2B3B001F6B2B /* CDNote+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586260CD2F1D2B3A001F6B2B /* CDNote+CoreDataClass.swift */; };
+		58BCBA572F1E63FF002391F5 /* SettingsView 2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58BCBA562F1E63FF002391F5 /* SettingsView 2.swift */; };
 		58D402312F1D41AC004230EA /* ShareSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D402302F1D41AB004230EA /* ShareSheet.swift */; };
 		58D9F6B92F1D49FA00254679 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D9F6B82F1D49F900254679 /* MainTabView.swift */; };
 		58D9F6BB2F1D4A4200254679 /* PinnedNotesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D9F6BA2F1D4A4100254679 /* PinnedNotesView.swift */; };
 		58D9F6BD2F1D4A9C00254679 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D9F6BC2F1D4A9B00254679 /* SettingsView.swift */; };
 		58D9F6BF2F1D4AC000254679 /* RemindersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D9F6BE2F1D4ABF00254679 /* RemindersView.swift */; };
+		58F1A8482F1E927300FA2A59 /* PrivacyPolicyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F1A8472F1E927100FA2A59 /* PrivacyPolicyView.swift */; };
+		58F1A84A2F1E928300FA2A59 /* TermsOfServiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F1A8492F1E928100FA2A59 /* TermsOfServiceView.swift */; };
+		58F1A84C2F1E929200FA2A59 /* LicensesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F1A84B2F1E928F00FA2A59 /* LicensesView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,11 +70,15 @@
 		586260CB2F1D1A8A001F6B2B /* AddTagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTagView.swift; sourceTree = "<group>"; };
 		586260CD2F1D2B3A001F6B2B /* CDNote+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDNote+CoreDataClass.swift"; sourceTree = "<group>"; };
 		58A63D162F1CF43700381E1B /* DevNotes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DevNotes.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		58BCBA562F1E63FF002391F5 /* SettingsView 2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingsView 2.swift"; sourceTree = "<group>"; };
 		58D402302F1D41AB004230EA /* ShareSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareSheet.swift; sourceTree = "<group>"; };
 		58D9F6B82F1D49F900254679 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		58D9F6BA2F1D4A4100254679 /* PinnedNotesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinnedNotesView.swift; sourceTree = "<group>"; };
 		58D9F6BC2F1D4A9B00254679 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		58D9F6BE2F1D4ABF00254679 /* RemindersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindersView.swift; sourceTree = "<group>"; };
+		58F1A8472F1E927100FA2A59 /* PrivacyPolicyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyView.swift; sourceTree = "<group>"; };
+		58F1A8492F1E928100FA2A59 /* TermsOfServiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsOfServiceView.swift; sourceTree = "<group>"; };
+		58F1A84B2F1E928F00FA2A59 /* LicensesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicensesView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +116,9 @@
 				5801CF5B2F1D5D2800076862 /* AboutDevNotesView.swift */,
 				58D9F6BA2F1D4A4100254679 /* PinnedNotesView.swift */,
 				58D9F6BC2F1D4A9B00254679 /* SettingsView.swift */,
+				58F1A8472F1E927100FA2A59 /* PrivacyPolicyView.swift */,
+				58F1A8492F1E928100FA2A59 /* TermsOfServiceView.swift */,
+				58F1A84B2F1E928F00FA2A59 /* LicensesView.swift */,
 				5801CF5D2F1D72D800076862 /* ThemePickerView.swift */,
 				58D9F6BE2F1D4ABF00254679 /* RemindersView.swift */,
 				58330E0F2F1D0CFE000876DC /* EditNoteView.swift */,
@@ -117,6 +128,7 @@
 				586260CD2F1D2B3A001F6B2B /* CDNote+CoreDataClass.swift */,
 				58330E132F1D0CFE000876DC /* NoteRepository.swift */,
 				58330E142F1D0CFE000876DC /* NoteStorage.swift */,
+				58BCBA562F1E63FF002391F5 /* SettingsView 2.swift */,
 			);
 			path = DevNotes;
 			sourceTree = "<group>";
@@ -209,6 +221,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				58F1A84C2F1E929200FA2A59 /* LicensesView.swift in Sources */,
 				5801CF5C2F1D5D2900076862 /* AboutDevNotesView.swift in Sources */,
 				58330E172F1D0CFE000876DC /* AddNoteView.swift in Sources */,
 				5801CF582F1D4D6500076862 /* PersistenceController.swift in Sources */,
@@ -234,10 +247,13 @@
 				58330E2B2F1D1086000876DC /* DevNotes.xcdatamodeld in Sources */,
 				58330E212F1D0CFE000876DC /* NoteStorage.swift in Sources */,
 				5801CF662F1D99B600076862 /* TagAssets.swift in Sources */,
+				58F1A8482F1E927300FA2A59 /* PrivacyPolicyView.swift in Sources */,
 				58D402312F1D41AC004230EA /* ShareSheet.swift in Sources */,
 				586260CE2F1D2B3B001F6B2B /* CDNote+CoreDataClass.swift in Sources */,
+				58BCBA572F1E63FF002391F5 /* SettingsView 2.swift in Sources */,
 				58D9F6B92F1D49FA00254679 /* MainTabView.swift in Sources */,
 				58D9F6BD2F1D4A9C00254679 /* SettingsView.swift in Sources */,
+				58F1A84A2F1E928300FA2A59 /* TermsOfServiceView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

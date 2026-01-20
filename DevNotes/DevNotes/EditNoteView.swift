@@ -15,9 +15,13 @@ struct EditNoteView: View {
     // ⏰ Hatırlatma
     @State private var hasReminder: Bool
     @State private var reminderDate: Date
+    @State private var showDeleteAlert = false
+
 
     let note: Note
     let onSave: (Note) -> Void
+    let onDelete: (Note) -> Void
+
 
     enum Field {
         case title
@@ -25,9 +29,14 @@ struct EditNoteView: View {
 
     // MARK: - INIT
 
-    init(note: Note, onSave: @escaping (Note) -> Void) {
+    init(
+        note: Note,
+        onSave: @escaping (Note) -> Void,
+        onDelete: @escaping (Note) -> Void
+    ) {
         self.note = note
         self.onSave = onSave
+        self.onDelete = onDelete
 
         _title = State(initialValue: note.title)
         _plainContent = State(initialValue: note.content)
@@ -38,6 +47,7 @@ struct EditNoteView: View {
         _hasReminder = State(initialValue: note.reminderDate != nil)
         _reminderDate = State(initialValue: note.reminderDate ?? Date())
     }
+
 
     // MARK: - VIEW
 
@@ -105,20 +115,36 @@ struct EditNoteView: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
 
-                // ❌ İptal
-                ToolbarItem(placement: .cancellationAction) {
+                // ⬅️ SOL: İptal + Sil
+                ToolbarItemGroup(placement: .cancellationAction) {
+
                     Button("İptal") {
                         dismiss()
                     }
+
+                    Button(role: .destructive) {
+                        showDeleteAlert = true
+                    } label: {
+                        Image(systemName: "trash")
+                    }
                 }
 
-                // 💾 Kaydet
+                // ➡️ SAĞ: Kaydet
                 ToolbarItem(placement: .confirmationAction) {
                     Button("Kaydet") {
                         save()
                     }
                     .disabled(!canSave)
                 }
+            }
+            .alert("Not silinsin mi?", isPresented: $showDeleteAlert) {
+                Button("Sil", role: .destructive) {
+                    onDelete(note)
+                    dismiss()
+                }
+                Button("Vazgeç", role: .cancel) {}
+            } message: {
+                Text("Bu işlem geri alınamaz.")
             }
             .onAppear {
                 focusedField = .title

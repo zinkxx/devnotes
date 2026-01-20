@@ -122,16 +122,14 @@ struct RichTextContainer: UIViewRepresentable {
     func makeUIView(context: Context) -> UIView {
         let container = UIView()
 
+        // MARK: Toolbar
         let toolbar = UIToolbar()
         toolbar.isTranslucent = true
-        toolbar.setBackgroundImage(UIImage(), forToolbarPosition: .any, barMetrics: .default)
 
-        if #available(iOS 15.0, *) {
-            let appearance = UIToolbarAppearance()
-            appearance.configureWithTransparentBackground()
-            toolbar.standardAppearance = appearance
-            toolbar.scrollEdgeAppearance = appearance
-        }
+        let appearance = UIToolbarAppearance()
+        appearance.configureWithTransparentBackground()
+        toolbar.standardAppearance = appearance
+        toolbar.scrollEdgeAppearance = appearance
 
         toolbar.items = [
             makeItem("bold", context, #selector(Coordinator.bold)),
@@ -142,10 +140,14 @@ struct RichTextContainer: UIViewRepresentable {
             makeItem("checklist", context, #selector(Coordinator.checklist))
         ]
 
+        // MARK: TextView
         let textView = UITextView()
         textView.font = .systemFont(ofSize: 16)
         textView.delegate = context.coordinator
-        textView.text = text   // ⭐ EN KRİTİK SATIR
+        textView.text = text
+        textView.backgroundColor = .clear
+        textView.textContainerInset = UIEdgeInsets(top: 12, left: 8, bottom: 12, right: 8)
+
         context.coordinator.textView = textView
 
         toolbar.translatesAutoresizingMaskIntoConstraints = false
@@ -177,27 +179,57 @@ struct RichTextContainer: UIViewRepresentable {
         Coordinator(onTextChange: onTextChange)
     }
 
+    // MARK: - Toolbar Button Factory
     private func makeItem(
         _ system: String,
         _ context: Context,
         _ selector: Selector
     ) -> UIBarButtonItem {
 
-        let image = UIImage(systemName: system,
-                            withConfiguration: UIImage.SymbolConfiguration(pointSize: 13))
+        let image = UIImage(
+            systemName: system,
+            withConfiguration: UIImage.SymbolConfiguration(
+                pointSize: 14,
+                weight: .semibold
+            )
+        )
 
-        var config = UIButton.Configuration.plain()
+        var config = UIButton.Configuration.filled()
         config.image = image
-        config.contentInsets = .zero
+        config.cornerStyle = .capsule
+        config.baseForegroundColor = .tintColor
+        config.baseBackgroundColor = UIColor.secondarySystemBackground
+        config.contentInsets = NSDirectionalEdgeInsets(
+            top: 6,
+            leading: 10,
+            bottom: 6,
+            trailing: 10
+        )
 
         let button = UIButton(configuration: config)
-        button.tintColor = .label
-        button.frame = CGRect(x: 0, y: 0, width: 28, height: 28)
-        button.addTarget(context.coordinator, action: selector, for: .touchUpInside)
+
+        button.addAction(
+            UIAction { _ in
+                // 🟡 Accent blink
+                UIView.animate(withDuration: 0.12, animations: {
+                    button.backgroundColor = UIColor.tintColor.withAlphaComponent(0.25)
+                }) { _ in
+                    UIView.animate(withDuration: 0.18) {
+                        button.backgroundColor = UIColor.secondarySystemBackground
+                    }
+                }
+
+                // 🎯 Gerçek aksiyon
+                _ = context.coordinator.perform(selector)
+            },
+            for: .touchUpInside
+        )
 
         return UIBarButtonItem(customView: button)
     }
 
+
+    // MARK: - Coordinator
     final class Coordinator: NSObject, UITextViewDelegate {
 
         weak var textView: UITextView?
@@ -211,8 +243,10 @@ struct RichTextContainer: UIViewRepresentable {
             onTextChange(textView.text)
         }
 
+        // MARK: Actions
         @objc func bold() { toggle(.traitBold) }
         @objc func italic() { toggle(.traitItalic) }
+
         @objc func underline() {
             guard let tv = textView else { return }
             let range = tv.selectedRange
@@ -223,20 +257,28 @@ struct RichTextContainer: UIViewRepresentable {
             )
         }
 
-        @objc func bullet() { textView?.insertText("\n• ") }
-        @objc func checklist() { textView?.insertText("\n☐ ") }
+        @objc func bullet() {
+            textView?.insertText("\n• ")
+        }
+
+        @objc func checklist() {
+            textView?.insertText("\n☐ ")
+        }
 
         private func toggle(_ trait: UIFontDescriptor.SymbolicTraits) {
             guard let tv = textView else { return }
             let font = tv.font ?? .systemFont(ofSize: 16)
+
             let traits = font.fontDescriptor.symbolicTraits.contains(trait)
                 ? font.fontDescriptor.symbolicTraits.subtracting(trait)
                 : font.fontDescriptor.symbolicTraits.union(trait)
+
             let desc = font.fontDescriptor.withSymbolicTraits(traits) ?? font.fontDescriptor
             tv.font = UIFont(descriptor: desc, size: font.pointSize)
         }
     }
 }
+
 
 
 private extension UIFont {

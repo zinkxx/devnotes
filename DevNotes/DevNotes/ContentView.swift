@@ -86,7 +86,11 @@ struct ContentView: View {
 
     private func noteRow(_ note: Note) -> some View {
         NavigationLink {
-            EditNoteView(note: note) { updateNote($0) }
+            EditNoteView(
+                note: note,
+                onSave: { updateNote($0) },
+                onDelete: { deleteNoteDirect($0) }
+            )
         } label: {
             noteCard(note)
         }

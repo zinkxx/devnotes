@@ -45,9 +45,16 @@ struct PinnedNotesView: View {
                 LazyVStack(spacing: 14) {
                     ForEach(filteredPinnedNotes) { note in
                         NavigationLink {
-                            EditNoteView(note: note) { _ in
-                                loadNotes()
-                            }
+                            EditNoteView(
+                                note: note,
+                                onSave: { _ in
+                                    loadNotes()
+                                },
+                                onDelete: { deletedNote in
+                                    NoteRepository.shared.delete(deletedNote)
+                                    loadNotes()
+                                }
+                            )
                         } label: {
                             pinnedCard(note)
                         }
@@ -59,6 +66,7 @@ struct PinnedNotesView: View {
             }
         }
     }
+
 
     // MARK: - CARD
     private func pinnedCard(_ note: Note) -> some View {
