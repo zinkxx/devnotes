@@ -98,6 +98,17 @@ DevNotes/
 - [ ] Widget support
 
 ---
+
+## Sync Roadmap
+
+- Offline-first behavior (WIP)
+
+- Retry/backoff logic (next)
+
+- UI sync indicator (planned)
+
+---
+
 ## 📸 Screenshots
 
 <p align="center">
