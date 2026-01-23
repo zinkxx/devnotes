@@ -1,4 +1,5 @@
 import Foundation
+import Combine
 
 enum TagAssets {
 
@@ -68,6 +69,27 @@ enum TagAssets {
 
         ("TagBrown", "Kahverengi"),
         ("TagGray", "Gri"),
-        ("TagBlack", "Siyah")
+        ("TagBlack", "Siyah"),
+        
+        // MARK: - Yeni Eklenen (Vurucu / Accent)
+         ("TagCrimson", "Koyu Kırmızı"),
+         ("TagAmber", "Amber"),
+         ("TagCoral", "Mercan"),
+         ("TagLime", "Lime Yeşili"),
+         ("TagSky", "Gökyüzü Mavisi"),
+
+         // MARK: - Yeni Eklenen (Soft / Pastel)
+         ("TagLavender", "Lavanta"),
+         ("TagPeach", "Şeftali"),
+         ("TagRose", "Gül"),
+         ("TagSand", "Kum"),
+         ("TagIce", "Buz Mavisi"),
+
+         // MARK: - Yeni Eklenen (Dark / Neutral)
+         ("TagCharcoal", "Kömür"),
+         ("TagSlate", "Arduvaz"),
+         ("TagSteel", "Çelik"),
+         ("TagOlive", "Zeytin"),
+         ("TagWine", "Şarap")
     ]
 }
