@@ -28,14 +28,38 @@ final class NoteRepository {
         }
     }
 
-    // MARK: - Add
+    // MARK: - Count (Abonelik için gerekli)
+
+    func noteCount() -> Int {
+        fetch().count
+    }
+
+    // MARK: - Subscription / Limit Check
+
+    /// Kullanıcı yeni not ekleyebilir mi?
+    /// Free: max 3 not
+    /// Pro: sınırsız
+    func canAddNewNote() -> Bool {
+        let count = noteCount()
+        return UserSession.shared.canCreateNote(currentCount: count)
+    }
+
+    // MARK: - Add (Limit enforced)
 
     func add(_ note: Note) {
+
+        // 🔐 FAIL-SAFE
+        // UI unutsa bile burada limit aşılmaz
+        guard canAddNewNote() else {
+            print("⛔️ Note limit reached. Upgrade required.")
+            return
+        }
+
         _ = CDNote.from(note: note, context: context)
         save()
     }
 
-    // MARK: - Update (Başlık, içerik, tag, pin)
+    // MARK: - Update (Başlık, içerik, tag, pin, reminder)
 
     func update(_ note: Note) {
         let request: NSFetchRequest<CDNote> = CDNote.fetchRequest()
@@ -48,10 +72,10 @@ final class NoteRepository {
         cd.createdAt = note.createdAt
         cd.isPinned = note.isPinned
 
-        // 🔔 HATIRLATMA (BU EKSİKTİ)
+        // 🔔 Hatırlatma
         cd.reminderDate = note.reminderDate
 
-        // 🏷️ TAG
+        // 🏷️ Tag
         if let tag = note.tag {
             cd.tagData = try? JSONEncoder().encode(tag)
         } else {
@@ -85,7 +109,7 @@ final class NoteRepository {
         }
     }
 
-    // MARK: - Delete ALL Notes (⚠️ SettingsView için)
+    // MARK: - Delete ALL Notes (SettingsView için)
 
     func deleteAll() {
         let request: NSFetchRequest<NSFetchRequestResult> = CDNote.fetchRequest()
@@ -96,7 +120,7 @@ final class NoteRepository {
             let result = try context.execute(batchDelete) as? NSBatchDeleteResult
             let objectIDs = result?.result as? [NSManagedObjectID] ?? []
 
-            // Context’i senkronla (çok önemli)
+            // Context senkronizasyonu (çok önemli)
             let changes: [AnyHashable: Any] = [
                 NSDeletedObjectsKey: objectIDs
             ]

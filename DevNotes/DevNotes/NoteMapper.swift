@@ -12,13 +12,13 @@ extension CDNote {
         }
 
         return Note(
-            id: id ?? UUID(),
-            title: title ?? "",
-            content: content ?? "",
-            createdAt: createdAt ?? Date(),
+            id: id,
+            title: title,
+            content: content,
+            createdAt: createdAt,
             tag: decodedTag,
             isPinned: isPinned,
-            reminderDate: reminderDate   // ✅ EKLENDİ
+            reminderDate: reminderDate
         )
     }
 
@@ -46,3 +46,4 @@ extension CDNote {
         return cd
     }
 }
+
